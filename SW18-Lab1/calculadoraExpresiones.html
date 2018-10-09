@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.1.2/math.min.js"></script>
+        <meta charset="utf-8">
+        <title>Calculadora de expresiones</title>
+    </head>
+    
+    <body>
+        <h1>¡A calcular!</h1>
+        <form id="formulario">
+            ¿Cuál es la expresión que quieres evaluar?
+            <input type="text" id="expresion" oninput="comprobar();"/>
+            <br><br>
+            
+            ¿Qué resultado esperas?
+            <input type="text" id="resultado" oninput="comprobar();"/>
+            <br><br>
+            
+            <input type="reset" id="resetear" value="Limpiar" onclick="limpiar();"/>
+            <p id="comprobacion"></p>
+        </form>
+        
+        <script>
+            function comprobar(){
+                var expr = document.getElementById("expresion").value;
+                var res = document.getElementById("resultado").value;
+                var comp = document.getElementById("comprobacion");
+                var solCorrecta = math.eval(expr);
+                if (expr.length>0 && res.length>0){
+                    if (res == solCorrecta){
+                        comp.innerHTML = "¡Correcto!"; 
+                        document.body.style.backgroundColor='#7fff9e';
+                    }else{
+                        comp.innerHTML = "¡Incorrecto!"; 
+                        document.body.style.backgroundColor='#fe4e4b';
+                    }
+                }
+            }
+            
+            function limpiar(){
+                var comp = document.getElementById("comprobacion");
+                comp.innerHTML = " ";
+                document.body.style.backgroundColor='#fff';
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Calculadora de operaciones básicas</title>
+    </head>
+    
+    <body>
+        <h1>¡A calcular!</h1>
+        <form id="formulario">
+            ¿Cuál es el primer número entero?
+            <input type="text" id="numero1" oninput="comprobar();"/>
+            <br><br>
+            
+            Selecciona el operador:
+            <select id="operador">
+                <option value="1">+</option>
+                <option value="2">-</option>
+                <option value="3">*</option>
+                <option value="4">/</option>
+            </select>
+            <br><br>
+            
+            ¿Cuál es el segundo número entero?
+            <input type="text" id="numero2" oninput="comprobar();"/>
+            <br><br>
+            
+            ¿Qué resultado esperas?
+            <input type="text" id="resultado" oninput="comprobar();"/>
+            <br><br>
+            
+            <input type="reset" id="resetear" value="Limpiar" onclick="limpiar();"/>
+            <p id="comprobacion"></p>
+        </form>
+        
+        <script>
+            function comprobar(){
+                var num1 = document.getElementById("numero1").value;
+                var num2 = document.getElementById("numero2").value;
+                var oper = document.getElementById("operador").value;
+                var res = document.getElementById("resultado").value;
+                var comp = document.getElementById("comprobacion");
+                if (oper == 1 && num1.length>0 && num2.length>0 && res.length>0){
+                    if(Number(num1) + Number(num2) == Number(res)){
+                        comp.innerHTML = "¡Correcto!"; 
+                        document.body.style.backgroundColor='#7fff9e';
+                    }else{
+                        comp.innerHTML = "¡Incorrecto!"; 
+                        document.body.style.backgroundColor='#fe4e4b';
+                    }
+                }
+                else if (oper == 2 && num1.length>0 && num2.length>0 && res.length>0){
+                    if(Number(num1) - Number(num2) == Number(res)){
+                        comp.innerHTML = "¡Correcto!";
+                        document.body.style.backgroundColor='#7fff9e';
+                    }else{
+                        comp.innerHTML = "¡Incorrecto!"; 
+                        document.body.style.backgroundColor='#fe4e4b';
+                    }
+                }
+                else if (oper == 3 && num1.length>0 && num2.length>0 && res.length>0){
+                   if(Number(num1) * Number(num2) == Number(res)){
+                        comp.innerHTML = "¡Correcto!"; 
+                        document.body.style.backgroundColor='#7fff9e';
+                    }else{
+                        comp.innerHTML = "¡Incorrecto!";
+                        document.body.style.backgroundColor='#fe4e4b';
+                    }
+                }
+                else if (oper == 4 && num1.length>0 && num2.length>0 && res.length>0){
+                    if(Number(num1) / Number(num2) == Number(res)){
+                        comp.innerHTML = "¡Correcto!"; 
+                        document.body.style.backgroundColor='#7fff9e';
+                    }else{
+                        comp.innerHTML = "¡Incorrecto!";
+                        document.body.style.backgroundColor='#fe4e4b';
+                    }
+                }
+            }
+            
+            function limpiar(){
+                var comp = document.getElementById("comprobacion");
+                comp.innerHTML = " ";
+                document.body.style.backgroundColor='#fff';
+            }
+        </script>
+    </body>
+</html>

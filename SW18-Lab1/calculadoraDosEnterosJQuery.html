@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Calculadora de operaciones básicas (usando JQuery)</title>
+    </head>
+    
+    <body>
+        <h1>¡A calcular!</h1>
+        <form id="formulario">
+            ¿Cuál es el primer número entero?
+            <input type="text" id="numero1" oninput="comprobar();"/>
+            <br><br>
+            
+            Selecciona el operador:
+            <select id="operador">
+                <option value="1">+</option>
+                <option value="2">-</option>
+                <option value="3">*</option>
+                <option value="4">/</option>
+            </select>
+            <br><br>
+            
+            ¿Cuál es el segundo número entero?
+            <input type="text" id="numero2" oninput="comprobar();"/>
+            <br><br>
+            
+            ¿Qué resultado esperas?
+            <input type="text" id="resultado" oninput="comprobar();"/>
+            <br><br>
+            
+            <input type="reset" id="resetear" value="Limpiar" onclick="limpiar();"/>
+            <p id="comprobacion"></p>
+        </form>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>
+            function comprobar(){
+                var num1 = $("#numero1").val();
+                var num2 = $("#numero2").val();
+                var oper = $("#operador").val();
+                var res = $("#resultado").val();
+                var comp = $("#comprobacion").val();
+                
+                if (oper == 1 && num1.length>0 && num2.length>0 && res.length>0){
+                    if(Number(num1) + Number(num2) == Number(res)){
+                        $("#comprobacion").text("¡Correcto!"); 
+                        $("body").css("background-color", "#7fff9e");
+                    }else{
+                        $("#comprobacion").text("¡Incorrecto!"); 
+                        $("body").css("background-color", "#fe4e4b");
+                    }
+                }
+                else if (oper == 2 && num1.length>0 && num2.length>0 && res.length>0){
+                    if(Number(num1) - Number(num2) == Number(res)){
+                        $("#comprobacion").text("¡Correcto!");
+                        $("body").css("background-color", "#7fff9e");
+                    }else{
+                        $("#comprobacion").text("¡Incorrecto!"); 
+                        $("body").css("background-color", "#fe4e4b");
+                    }
+                }
+                else if (oper == 3 && num1.length>0 && num2.length>0 && res.length>0){
+                   if(Number(num1) * Number(num2) == Number(res)){
+                        $("#comprobacion").text("¡Correcto!"); 
+                        $("body").css("background-color", "#7fff9e");
+                    }else{
+                        $("#comprobacion").text("¡Incorrecto!");
+                        $("body").css("background-color", "#fe4e4b");
+                    }
+                }
+                else if (oper == 4 && num1.length>0 && num2.length>0 && res.length>0){
+                    if(Number(num1) / Number(num2) == Number(res)){
+                        $("#comprobacion").text("¡Correcto!");
+                        $("body").css("background-color", "#7fff9e");
+                        
+                    }else{
+                        $("#comprobacion").text("¡Incorrecto!");
+                        $("body").css("background-color", "#fe4e4b");
+                    }
+                }
+            };
+            
+            function limpiar(){
+                var comp = $("#comprobacion").val();
+                $("#comprobacion").text("");
+                $("body").css("background-color", "#fff");
+            };
+        </script>
+    </body>
+</html>
