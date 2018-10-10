@@ -29,7 +29,7 @@
     <section class="main" id="s1">
     
 	<div>
-		<form id='fpreguntas' name='fpreguntas' action="" method="post" enctype="multipart/form-data">
+		<form id='fpreguntas' name='fpreguntas' action="prueba.php" method="post" enctype="multipart/form-data">
 			Dirección de correo(*): <input type="text" id="email" name="email"><br>
 			Enunciado de la pregunta(*): <input type="text" id="enunciado" name="enunciado"><br>
 			Respuesta correcta(*): <input type="text" id="respCorrecta" name="respCorrecta"><br>
@@ -45,12 +45,11 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript">
-		$("#fpreguntas").on('submit', function(){
+		$("#fpreguntas").submit(function(){
 			var exprEmail =  /[a-zA-Z]+[0-9]{3}@ikasle\.ehu\.eus/
 			var exprComp = /[0-5]/
 
 			console.log()
-			alert("Prueba");
 			if (exprEmail.test($("#email").val()) == false){
 				alert("El correo introducido no es válido");
 				return false;
@@ -63,7 +62,15 @@
 				alert("El enunciado debe tener, al menos, 10 caracteres");
 				return false;
 			}
-			else if ($("#respInc1").val().length == 0) || ($("#respInc2").val().length == 0) || ($("#respInc3").val().length == 0){
+			else if ($("#respInc1").val().length == 0){
+				alert("Por favor, asegúrese de que ha introducido todas las respuestas");
+				return false;
+			}
+			else if ($("#respInc2").val().length == 0){
+				alert("Por favor, asegúrese de que ha introducido todas las respuestas");
+				return false;
+			}
+			else if ($("#respInc3").val().length == 0){
 				alert("Por favor, asegúrese de que ha introducido todas las respuestas");
 				return false;
 			}
