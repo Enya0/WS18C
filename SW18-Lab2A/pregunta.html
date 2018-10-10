@@ -50,7 +50,11 @@
 			var exprComp = /[0-5]/
 
 			console.log()
-			if (exprEmail.test($("#email").val()) == false){
+			if ($("#email").val().length == 0){
+				alert("Por favor, introduzca un email");
+				return false;
+			}
+			else if (exprEmail.test($("#email").val()) == false){
 				alert("El correo introducido no es válido");
 				return false;
 			}
@@ -74,6 +78,10 @@
 				alert("Por favor, asegúrese de que ha introducido todas las respuestas");
 				return false;
 			}
+			else if ($("#complejidad").val().length == 0){
+				alert("Por favor, introduzca un nivel de complejidad");
+				return false;
+			}
 			else if (exprComp.test($("#complejidad").val()) == false){
 				alert("La complejidad introducida no es válida");
 				return false;
@@ -86,7 +94,7 @@
 	</script>
     </section>
 	<footer class='main' id='f1'>
-		<a href='https://github.com/Enya0/WS18C'>Link GITHUB</a>
+		<a href='https://github.com/Enya0/WS18C/tree/master/SW18-Lab2A'>Link GITHUB</a>
 	</footer>
 </div>
 </body>
