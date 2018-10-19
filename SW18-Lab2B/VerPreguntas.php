@@ -41,7 +41,7 @@ if (!$mysql){
 	<div id="pregDiv" style="overflow:scroll; height:250px; width:95%;">
 		<table id="preguntas" name="preguntas" border>
 			<?php
-			$result = mysqli_query($mysql, "SELECT * FROM Preguntas");
+			$result = mysqli_query($mysql, "SELECT * FROM preguntas");
 
 			echo "<tr>";
 			echo "<th>Email</th>";
@@ -73,7 +73,7 @@ if (!$mysql){
 
     </section>
 	<footer class='main' id='f1'>
-		<a href='https://github.com/Enya0/WS18C/tree/master/SW18-Lab2A'>Link GITHUB</a>
+		<a href='https://github.com/Enya0/WS18C/tree/master/SW18-Lab2B'>Link GITHUB</a>
 	</footer>
 </div>
 </body>
