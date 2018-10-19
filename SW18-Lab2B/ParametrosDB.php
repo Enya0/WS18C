@@ -1,5 +1,5 @@
 <?php
-$local=0; //0 para la aplicación en 000WebHost
+$local=1; //0 para la aplicación en 000WebHost
 if ($local==1){
 	$server="localhost";
 	$user="root";
