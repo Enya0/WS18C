@@ -1,3 +1,13 @@
+<?php
+include "ParametrosDB.php";
+
+//Creamos la conexión
+$mysql = mysqli_connect($server,$user,$pass,$basededatos);
+if (!$mysql){
+	die ("Fallo al conectar a MySQL: " . mysqli_connect_error());
+}
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,6 +26,7 @@
   <body>
   <div id='page-wrap'>
 	<?php
+		if(isset($_GET['email'])){
 			$email = $_GET['email'];
 			$resultado = mysqli_query($mysql, "SELECT imagen FROM usuarios WHERE email='$email'");
 			if($foto = mysqli_fetch_row($resultado)){
