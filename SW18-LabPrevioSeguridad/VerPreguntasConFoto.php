@@ -28,8 +28,15 @@ if (!$mysql){
 	<?php
 		if(isset($_GET['email'])){
 			$email = $_GET['email'];
+			$resultado = mysqli_query($mysql, "SELECT imagen FROM usuarios WHERE email='$email'");
+			if($foto = mysqli_fetch_row($resultado)){
+				if ($foto[0] != ""){
+					$imagenUsuario = "<img src='data:image/jpg;base64,".base64_encode($foto[0]). "' width='30'/>";
+				}else{
+					$imagenUsuario = "";}}
+
 			echo "<header class='main' id='h1'>
-				<span class='right'><a href='Logout.php'>Logout </a>$email</span>
+				<span class='right'><a href='Logout.php'>Logout </a>$imagenUsuario $email </span>
 				<h2>Quiz: el juego de las preguntas</h2>
 			</header>
 			<nav class='main' id='n1' role='navigation'>
@@ -61,9 +68,9 @@ if (!$mysql){
 			echo "<th>Email</th>";
 			echo "<th>Enunciado</th>";
 			echo "<th>Respuesta correcta</th>";
-			echo "<th>Respuesa incorrecta 1</th>";
-			echo "<th>Respuesa incorrecta 2</th>";
-			echo "<th>Respuesa incorrecta 3</th>";
+			echo "<th>Respuesta incorrecta 1</th>";
+			echo "<th>Respuesta incorrecta 2</th>";
+			echo "<th>Respuesta incorrecta 3</th>";
 			echo "<th>Nivel de complejidad</th>";
 			echo "<th>Tema</th>";
 			echo "<th>Imagen</th>";
