@@ -94,7 +94,7 @@ if (!$mysql){
 
     </section>
 	<footer class='main' id='f1'>
-		<a href='https://github.com/Enya0/WS18C/tree/master/SW18-LabPrevioSeguridad'>Link GITHUB</a>
+		<a href='https://github.com/Enya0/WS18C/tree/master/SW18-Lab4'>Link GITHUB</a>
 	</footer>
 </div>
 </body>

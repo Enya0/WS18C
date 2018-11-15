@@ -41,8 +41,7 @@ if (!$mysql){
 			</header>
 			<nav class='main' id='n1' role='navigation'>
 				<span><a href='layout.php?email=$email'>Inicio</a></span>
-				<span><a href='pregunta.php?email=$email'>Insertar Pregunta</a></span>
-				<span><a href='VerPreguntasConFoto.php?email=$email'>Ver Preguntas</a></span>
+				<span><a href='GestionPreguntas.php?email=$email'>Gestionar Preguntas</a></span>
 				<span><a href='creditos.php?email=$email'>Creditos</a></span>
 			</nav>";
         }else{
@@ -64,7 +63,7 @@ if (!$mysql){
 	</div>
     </section>
 	<footer class='main' id='f1'>
-		<a href='https://github.com/Enya0/WS18C/tree/master/SW18-LabPrevioSeguridad'>Link GITHUB</a>
+		<a href='https://github.com/Enya0/WS18C/tree/master/SW18-Lab4'>Link GITHUB</a>
 	</footer>
 </div>
 </body>

@@ -41,8 +41,7 @@ if (!$mysql){
 			</header>
 			<nav class='main' id='n1' role='navigation'>
 				<span><a href='layout.php?email=$email'>Inicio</a></span>
-				<span><a href='pregunta.php?email=$email'>Insertar Pregunta</a></span>
-				<span><a href='VerPreguntasConFoto.php?email=$email'>Ver Preguntas</a></span>
+				<span><a href='GestionPreguntas.php?email=$email'>Gestionar Preguntas</a></span>
 				<span><a href='creditos.php?email=$email'>Creditos</a></span>
 			</nav>";
 		}else{
