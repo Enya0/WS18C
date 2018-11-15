@@ -50,7 +50,7 @@ if (!$mysql){
 		}
 	?>
     <section class="main" id="s1">
-    	
+    	<div><p id="usuariosConectados"></p></div>
     	<p id="numeroPreguntas"></p>
 		<div>
 			<form id='fpreguntas' name='fpreguntas' action="InsertarPreguntaConFoto.php?email=<?php echo $email ?>" method="post" enctype="multipart/form-data">
