@@ -50,7 +50,7 @@ if (!$mysql){
 		}
 	?>
     <section class="main" id="s1">
-    	<div><p id="usuariosConectados"></p></div>
+    	
     	<p id="numeroPreguntas"></p>
 		<div>
 			<form id='fpreguntas' name='fpreguntas' action="InsertarPreguntaConFoto.php?email=<?php echo $email ?>" method="post" enctype="multipart/form-data">
@@ -79,7 +79,6 @@ if (!$mysql){
 	function insertarPregunta(){
 
 		var preg = $("#fpreguntas").get(0);
-		console.log($("#fpreguntas").get(0));
 
 		$.ajax({
             url: 'InsertarPreguntaConFoto.php',
@@ -131,8 +130,9 @@ if (!$mysql){
     		}
     	});
     }
+
     cuantasPreguntas();
-    setInterval(cuantasPreguntas(),20000);
+    setInterval(cuantasPreguntas,20000);
 
     xmlhttpUsuarios = new XMLHttpRequest();
 	xmlhttpUsuarios.onreadystatechange = function(){
@@ -146,9 +146,8 @@ if (!$mysql){
 		xmlhttpUsuarios.send();	
 
 	}
-
 	cuantosUsuarios();
-	setInterval(cuantosUsuarios(),20000);
+	setInterval(cuantosUsuarios,20000);
 
 	$("#imagen").click(function(event){
 		$("input[type=file]").change(function(event) {
