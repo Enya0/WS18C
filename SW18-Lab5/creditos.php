@@ -101,7 +101,7 @@ if (!$mysql){
 	</footer>
 </div>
 </body>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzu1h2MY0l_9HhN-AmNUch4ScYQyQh5Ro">
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=">
 </script>
 <script>
     var requestURL = "http://ip-api.com/json";
