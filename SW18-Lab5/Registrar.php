@@ -83,7 +83,7 @@ if (!$mysql){
 				$contrasena = $_POST['contrasena'];
 				$contrasenaRep = $_POST['contrasenaRep'];
 				$ticket = 1010;
-				require_once('nusoap-1-master/lib/nusoap.php');
+				require_once('nusoap-0.9.5/lib/nusoap.php');
 
 				function comprobarEmail($str){
 					$matches = null;
@@ -106,7 +106,8 @@ if (!$mysql){
 				}
 
 				$soapclientPass = new nusoap_client('http://magnasis.com/enya/SW18-Lab5/ComprobarPassword.php?wsdl', true);
-				$passw = $soapclientPass->call('comprobarPassword', array('contrasena' => $contrasena, 'ticket' => $ticket));
+				//$soapclientPass = new nusoap_client('http://localhost/SW18/SW18-Lab5/ComprobarPassword.php?wsdl', true);
+				$passw = $soapclientPass->call('comprobarPassword', array('passw' => $contrasena, 'ticket' => $ticket));
 				if(strstr($passw, 'INVALIDA')){
 					die('<script>$("#errorRegistro").text("El password NO es válido");</script>');
 				}
@@ -185,7 +186,6 @@ if (!$mysql){
 		xmlhttpContrasena.onreadystatechange = function () {
 			if (xmlhttpContrasena.readyState == 4){
 				document.getElementById("contrasenaValida").innerHTML = xmlhttpContrasena.responseText;
-				console.log(xmlhttpContrasena.responseText.trim());
 				if (xmlhttpContrasena.responseText.trim() == "VALIDA") {
 					$('#contrasenaValida').text('La contraseña es válida');
 					contrasenaGuay = true;
@@ -199,7 +199,7 @@ if (!$mysql){
 
 	    function comprobarContrasenaGuay() {
 	        if ($('#contrasena').val().length != 0) {
-	        	console.log($('#contrasena').val());
+	        	//console.log($('#contrasena').val());
 	            xmlhttpContrasena.open("GET", "ComprobarContrasena.php?contrasena=" + $('#contrasena').val(), true);
 	            xmlhttpContrasena.send();
 	        }

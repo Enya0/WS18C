@@ -1,5 +1,5 @@
 <?php
-    require_once('nusoap-1-master/lib/nusoap.php');
+    require_once('nusoap-0.9.5/lib/nusoap.php');
 
     function ObtenerPregunta($id){
     	include "ParametrosDB.php";

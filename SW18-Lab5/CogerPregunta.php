@@ -1,6 +1,6 @@
 <?php
-	require_once('nusoap-1-master/lib/nusoap.php');
-	$soapclient = new nusoap_client('http://localhost/SW18/SW18-Lab5/ObtenerPreguntaSW.php?wsdl', true);
+	require_once('nusoap-0.9.5/lib/nusoap.php');
+	$soapclient = new nusoap_client('http://magnasis.com/enya/SW18-Lab5/ObtenerPreguntaSW.php?wsdl', true);
 	if (isset($_GET['id'])){
 		$cliente = $soapclient->call('ObtenerPregunta', array('id' => $_GET['id']));
 
