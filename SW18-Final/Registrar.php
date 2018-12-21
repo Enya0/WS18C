@@ -41,6 +41,7 @@ if (!$mysql){
 		    </header>
 			<nav class='main' id='n1' role='navigation'>
 				<span><a href='layout.php'>Inicio</a></span>
+				<span><a href='ModificarPassword.php'>Modificar Contraseña</a></span>
 				<span><a href='creditos.php'>Creditos</a></span>
 			</nav>";
 		}
@@ -71,6 +72,7 @@ if (!$mysql){
 				$contrasena = $_POST['contrasena'];
 				$contrasenaRep = $_POST['contrasenaRep'];
 				$ticket = 1010;
+				$estado = "activo";
 				require_once('nusoap-0.9.5/lib/nusoap.php');
 
 				$soapclient = new nusoap_client('http://ehusw.es/jav/ServiciosWeb/comprobarmatricula.php?wsdl', true);
@@ -116,11 +118,11 @@ if (!$mysql){
 					if(camposRellenados($mysql)){
 						if($_FILES["imagen"]["type"]){
 							$imagen = mysqli_real_escape_string($mysql, file_get_contents($_FILES["imagen"]["tmp_name"]));
-							$sql = "INSERT INTO usuarios (email, nombreApellidos, password, imagen) VALUES ('$email', '$nombreApellidos', '$contrasena', '$imagen')";
+							$sql = "INSERT INTO usuarios (email, nombreApellidos, password, imagen, estado) VALUES ('$email', '$nombreApellidos', '$contrasena', '$imagen', '$estado')";
 							$_SESSION['foto'] = $imagen;
 						}
 						else{
-							$sql = "INSERT INTO usuarios (email, nombreApellidos, password) VALUES ('$email', '$nombreApellidos', '$contrasena')";
+							$sql = "INSERT INTO usuarios (email, nombreApellidos, password, estado) VALUES ('$email', '$nombreApellidos', '$contrasena', '$estado')";
 						}
 						if (mysqli_query($mysql, $sql)){
 							//session_start();
@@ -234,7 +236,7 @@ if (!$mysql){
 	</script>
     </section>
 	<footer class='main' id='f1'>
-		<a href='https://github.com/Enya0/WS18C/tree/master/SW18-Lab6'>Link GITHUB</a>
+		<a href='https://github.com/Enya0/WS18C/tree/master/SW18-Final'>Link GITHUB</a>
 	</footer>
 </div>
 </body>

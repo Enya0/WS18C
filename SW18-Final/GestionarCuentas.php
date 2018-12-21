@@ -67,7 +67,7 @@ if (!$mysql){
 				echo "</tr>";
 
 				while($row = mysqli_fetch_row($result)){
-					if ($row[0] != "admin@ehu.es"){
+					if ($row[0] != "admin@ehu.es" && $row[0] != "vadillo@ehu.es"){
 						echo "<tr>";
 						echo "<td style='width:25%;' align='center'>".$row[0]."</td>";
 						echo "<td style='width:15%;' align='center'>".$row[1]."</td>";
@@ -91,7 +91,7 @@ if (!$mysql){
 
     </section>
 	<footer class='main' id='f1'>
-		<a href='https://github.com/Enya0/WS18C/tree/master/SW18-Lab6'>Link GITHUB</a>
+		<a href='https://github.com/Enya0/WS18C/tree/master/SW18-Final'>Link GITHUB</a>
 	</footer>
 </div>
 

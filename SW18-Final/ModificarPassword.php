@@ -37,43 +37,82 @@ if (!$mysql){
 		    </header>
 			<nav class='main' id='n1' role='navigation'>
 				<span><a href='layout.php'>Inicio</a></span>
+				<span><a href='ModificarPassword.php'>Modificar Contraseña</a></span>
 				<span><a href='creditos.php'>Creditos</a></span>
 			</nav>";
 		}
 	?>
     <section class="main" id="s1">
 		<div>
-			<form id='fpassword' name='fpassword' action="CambiarPassword.php" method="post" enctype="multipart/form-data">
+			<form id='fpassword' name='fpassword' action="ModificarPassword.php" method="post" enctype="multipart/form-data">
 				Email: <input type="text" id="email" name="email"><br/>
-				Nueva contraseña(*): <input type="password" id="nuevaPass" name="nuevaPass"><br/>
 				<small><input type="submit" id="actualizarPass" name="actualizarPass" value="Actualizar contraseña""></small>
 			</form>
 
 			<?php
 
-				if (isset($_POST['nuevaPass'])){
-
-					//include "ParametrosDB.php";
+				if (isset($_POST['email'])){
 
 					$email = $_POST['email'];
-					$nuevaContra = $_POST['nuevaPass'];
-
-					$nuevaContra = hash('md5', $nuevaContra);
 
 					$mysql = mysqli_connect($server,$user,$pass,$basededatos);
 					if (!$mysql){
 						echo ("Fallo al conectar a MySQL: " . mysqli_connect_error());
-						echo ("<br/><a href='CambiarPassword.php'> Volver a intentarlo</a>");
+						echo ("<br/><a href='ModificarPassword.php'> Volver a intentarlo</a>");
 					}
 					else{
-						$result = "UPDATE usuarios SET password = '$nuevaContra' WHERE email = '$email' ";
 
-						if (mysqli_query($mysql, $result)){
-							echo ("Enhorabuena, su password ha sido actualizado");
-						}else{
-							echo ("Ha habido un error<p><a href='CambiarPassword.php'>Puede intentarlo de nuevo</a>");
+						$sql = "SELECT * FROM usuarios WHERE email = '$email' ";
+
+						$result = mysqli_query($mysql, $sql);
+
+						if ($result){
+							$row = mysqli_fetch_row($result);
 						}
 						
+						if($row[0] == $email){
+							$to = $email;
+							$subject = "Recupera tu contraseña";
+
+							$codigo = rand(10000,99999);
+
+							session_start();
+
+							$_SESSION['code'] = $codigo;
+							$_SESSION['email'] = $email;
+
+							$message = "
+							<html>
+							<head>
+							<title>Recupera tu contraseña</title>
+							</head>
+							<body>
+							<h3>Sigue estos pasos para recuperar tu contraseña:</h3>
+							<ol>
+								<li>Entra en el link que te indicamos a continuación</li>
+								<li>Introduce el código proporcionado y la nueva contraseña</li>
+								<li>Si todo va bien, la página te lo notificará y habrás cambiado tu contraseña</li>
+							</ol>
+							<h3>Link a la página de recuperación:</h3>
+							<h2><a href='http://enya-sw15.hol.es/SW18-Final/RecuperarPassword.php?email=".$email."' id='layout'>Aquí</a></h2>
+							<h3>Código de recuperación:</h3>
+							<h2>".$codigo."</h2>
+							</body>
+							</html>
+							";
+
+							$headers = "MIME-Version: 1.0" . "\r\n";
+							$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+							$headers .= 'From: <QUIZ>' . "\r\n";
+
+							mail($to,$subject,$message,$headers);
+
+							echo "El email se ha enviado correctamente.";
+
+						}else{
+							echo ("El email introducido no existe");
+						}
 						mysqli_close($mysql);
 					}
 				}
@@ -81,7 +120,7 @@ if (!$mysql){
 		</div>
     </section>
 	<footer class='main' id='f1'>
-		<a href='https://github.com/Enya0/WS18C/tree/master/SW18-Lab5'>Link GITHUB</a>
+		<a href='https://github.com/Enya0/WS18C/tree/master/SW18-Final'>Link GITHUB</a>
 	</footer>
   </div>
 </body>

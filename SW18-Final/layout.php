@@ -68,6 +68,7 @@ if (!$mysql){
 		    </header>
 			<nav class='main' id='n1' role='navigation'>
 				<span><a href='layout.php'>Inicio</a></span>
+				<span><a href='ModificarPassword.php'>Modificar Contraseña</a></span>
 				<span><a href='creditos.php'>Creditos</a></span>
 			</nav>";
 		}
@@ -75,11 +76,11 @@ if (!$mysql){
     <section class="main" id="s1">
     
 	<div>
-	Aqui se visualizan las preguntas y los creditos ...
+	<img src="fotos/layout.gif" width="90%"/>
 	</div>
     </section>
 	<footer class='main' id='f1'>
-		<a href='https://github.com/Enya0/WS18C/tree/master/SW18-Lab6'>Link GITHUB</a>
+		<a href='https://github.com/Enya0/WS18C/tree/master/SW18-Final'>Link GITHUB</a>
 	</footer>
 </div>
 </body>
