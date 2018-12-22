@@ -53,7 +53,7 @@ if (!$mysql){
 			Dirección de correo(*): <input type="text" id="email" name="email"><br/>
 			Password(*): <input type="password" id="contrasena" name="contrasena"><br/>
 			<input type="submit" id="enviar" name="enviar" value="Enviar"><br/><br/>
-			<small><span><a href='CambiarPassword.php'>¿Has olvidado tu password?</a></span></small>
+			<small><span><a href='ModificarPassword.php'>¿Has olvidado tu password?</a></span></small>
 		</form>
 
 		<?php
