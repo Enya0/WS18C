@@ -1,5 +1,14 @@
 <?php
 session_start();
+
+require_once "config.php";
+if (isset($_SESSION['access_token'])) {
+    header('Location: layout.php');
+    exit();
+}
+$redirectURL = "http://localhost/SW18/SW18-Final/fb-callback.php";
+$permissions = ['email'];
+$loginURL = $helper->getLoginUrl($redirectURL, $permissions);
 ?>
 
 <?php
@@ -52,7 +61,8 @@ if (!$mysql){
 		<form id='flogin' name='flogin' action="Login.php" method="post" enctype="multipart/form-data">
 			Dirección de correo(*): <input type="text" id="email" name="email"><br/>
 			Password(*): <input type="password" id="contrasena" name="contrasena"><br/>
-			<input type="submit" id="enviar" name="enviar" value="Enviar"><br/><br/>
+			<input type="submit" id="enviar" name="enviar" value="Enviar">
+			<input type="button" onclick="window.location = '<?php echo $loginURL ?>';" value="Entrar con Facebook" class="btn btn-primary"><br/><br/>
 			<small><span><a href='ModificarPassword.php'>¿Has olvidado tu password?</a></span></small>
 		</form>
 
