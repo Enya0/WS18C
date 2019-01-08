@@ -1,5 +1,5 @@
 <?php
-$local=0; //0 para la aplicación en el host
+$local=1; //0 para la aplicación en el host
 if ($local==1){
 	$server="localhost";
 	$user="root";
@@ -9,7 +9,7 @@ if ($local==1){
 else{
 	$server="localhost";
 	$user="u653088897_enya";
-	$pass="fUeXg:QDI89U";
+	$pass="";
 	$basededatos="u653088897_enya";
 }
 ?>
